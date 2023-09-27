@@ -342,3 +342,9 @@ variable "disable_rdp" {
   description = "Disables RDP for Iris Anywhere instances. Default false"
   default     = false
 }
+
+variable "instance_profile_name" {
+  type        = string
+  description = "Specifies the instance profile name"
+  default     = "Default-Name"
+}

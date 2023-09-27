@@ -88,15 +88,6 @@ data "template_file" "cloud_init" {
   }
 }
 
-data "terraform_remote_state" "iris" {
-  backend = "s3" 
-    config = {
-      bucket = "gm-iris-saas-useast2-tf-states"
-      key    = "aws/us-east-2/gm-iris-saas/gm-vod/iris-saas-roles.tfstate"
-      region = "us-east-2"
-  }
-}
-
 resource "aws_launch_template" "iris" {
   name_prefix                          = replace("${var.hostname_prefix}-${var.instance_type}", ".", "")
   image_id                             = coalesce(var.base_ami, data.aws_ami.GrayMeta-Iris-Anywhere.id)
@@ -109,7 +100,7 @@ resource "aws_launch_template" "iris" {
 
 
   iam_instance_profile {
-    name = data.terraform_remote_state.iris.outputs.instance_profile_name
+    name = var.instance_profile_name
   }
 
   block_device_mappings {
