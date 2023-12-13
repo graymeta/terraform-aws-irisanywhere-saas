@@ -95,6 +95,7 @@ Write-EventLog -LogName IrisAnywhere -source IrisAnywhere -EntryType Information
             Write-EventLog -LogName IrisAnywhere -source IrisAnywhere -EntryType Information -eventid 1000 -message "Meta bucket $s3_meta_bucketname  & $dir"
         }
         Write-EventLog -LogName IrisAnywhere -source IrisAnywhere -EntryType Information -eventid 1000 -message "Meta access key $s3_meta_access_key" 
+        tiercli config global workers 64
         tiercli config reload
         tiercli op clean "$dir"
         $bucketpaths.add("$dir")
