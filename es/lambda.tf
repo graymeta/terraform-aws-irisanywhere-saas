@@ -27,7 +27,7 @@ data "aws_iam_policy_document" "policy" {
 
     principals {
       type        = "AWS"
-      identifiers = ["${var.arn_of_indexresource}"]
+      identifiers = [var.arn_of_indexresource]
     }
 
     actions = ["sts:AssumeRole"]
@@ -83,7 +83,7 @@ resource "aws_lambda_function" "update-es-index-lambda" {
   }
 }
 
-resource "aws_s3_bucket_notification" "s3object-events" {
+/* resource "aws_s3_bucket_notification" "s3object-events" {
   bucket = var.bucketlist
 
   lambda_function {
@@ -98,7 +98,7 @@ resource "aws_lambda_permission" "s3objectperm" {
   function_name = aws_lambda_function.update-es-index-lambda.arn
   principal     = "s3.amazonaws.com"
   source_arn    = "arn:aws:s3:::${var.bucketlist}"
-}
+} */
 
 resource "aws_cloudwatch_log_group" "update-es-index" {
   name              = "/aws/lambda/${aws_lambda_function.update-es-index-lambda.function_name}"
