@@ -4,13 +4,6 @@
         {
             "Effect": "Allow",
             "Action": [
-                "ec2:DescribeInstances"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
                 "autoscaling:DescribeAutoScalingInstances",
                 "autoscaling:DescribeAutoScalingGroups",
                 "autoscaling:SetDesiredCapacity"
@@ -52,7 +45,11 @@
         },
         {
             "Effect": "Allow",
-            "Action": "autoscaling:DescribeAutoScalingInstances",
+            "Action": [
+                "autoscaling:DescribeAutoScalingInstances",
+                "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:SetDesiredCapacity"
+            ],
             "Resource": "*"
         },
         {
