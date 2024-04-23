@@ -7,6 +7,27 @@
         "Service": "ec2.amazonaws.com"
       },
       "Action": "sts:AssumeRole"
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::028238641559:user/jon.flaig@graymeta.com"
+      },
+      "Action": "sts:AssumeRole"
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::028238641559:role/s3_indexer_role-prod-nbcu-vod"
+      },
+      "Action": "sts:AssumeRole"
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::028238641559:role/iadm-nbcu-t3xlarge-Role"
+      },
+      "Action": "sts:AssumeRole"
     }
   ]
 }
