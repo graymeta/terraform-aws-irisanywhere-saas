@@ -348,3 +348,8 @@ variable "instance_profile_name" {
   description = "Specifies the instance profile name"
   default     = "Default-Name"
 }
+variable "cache_content" {
+  type        = bool
+  description = "If true, Tiger Bridge will cache the content to local ebs volume, if false, rclone will stream file with minimal caching (if any)"
+  default     = true
+}
